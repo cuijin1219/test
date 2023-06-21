@@ -1,0 +1,20 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/Bare/Bare",
+    "pages/PON/PON",
+    "pages/total/total",
+    "pages/logs/logs",
+    "pages/VC-OTN/VC-OTN",
+    "pages/PTN_SPN/PTN_SPN"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,98 @@
+<!--pages/Bare/Bare.wxml-->
+<view class="pageName">裸纤</view>
+<button class="but" bindtap="clear" size="mini">重置数据</button>
+<view>
+  <view>
+    <view class="problem">1.请选择保障等级：</view>
+    <radio-group bindchange="pro1">
+      <label>
+        <radio value="a" checked="true"/>普通
+      </label>    
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">2.客户提供对接设备：</view>
+    <radio-group bindchange="pro2">
+      <label>
+        <radio value="b" />OTN
+      </label>
+      <label>
+        <radio value="c" />其他设备
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">3.是否收光：</view>
+    <radio-group bindchange="pro3">
+      <label>
+        <radio value="d" />是
+      </label>
+      <label>
+        <radio value="e" />否
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">4.请选择设备类型：</view>
+    <radio-group bindchange="pro4">
+      <label>
+        <radio value="f" />三方OLT
+      </label>
+      <label>
+        <radio value="h" />华为OLT
+      </label>
+      <label>
+        <radio value="g" />三方光放+OLT
+      </label>
+      <label>
+        <radio value="i" />华为光放+OLT
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>{{id1+id2+id3+id4}}</view>
+
+<view wx:if="{{type!='c'}}">
+  <view class="problem">设备费（万）:{{f1}}</view>
+  <view class="problem">单端平均造价（万）:{{f5}}</view>
+  <view class="problem">联调费（万）:{{f2}}</view>
+  <view class="problem">平均造价（万）:{{f4}}</view>
+  <view class="problem">预计总价:{{f_total}}</view>
+  <button bindtap='link'>提交</button>
+</view>
+
+<!-- <view>------------------------------------------------------ </view>
+<navigator class="next" url="/pages/total/total?f1={{f1}}&f2={{f2}}&f3={{f3}}">下一页</navigator> -->
+<view wx:if="{{type=='c'}}">
+  <button wx:if="{{count==0}}" bindtap="link">提交</button>
+  <!-- <view bindtap='link'>
+    <view class="other" bindtap='click'>显示隐藏组网专用内容</view>
+  </view> -->
+</view>
+
+<view>{{f1}}+{{f2}}+{{f5}}+{{f4}}</view>
+<!-- <view hidden="{{hiddenName}}"> -->
+
+<view wx:if="{{type=='c'}}">  
+  <view wx:if="{{count==1}}">
+    <view>----------------------组网专用---------------------- </view>
+    <view class="problem">请选择组网分点专线：</view>
+    <navigator class="choice" url="/pages/VC-OTN/VC-OTN?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">VC-OTN</navigator>
+    <navigator class="choice" url="/pages/PTN_SPN/PTN_SPN?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">PTN/SPN</navigator>
+    <navigator class="choice" url="/pages/PON/PON?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">PON</navigator>
+    <navigator class="choice" url="/pages/Bare/Bare?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">裸纤</navigator>
+  </view>
+</view>
+
+<view wx:if="{{count==2}}">
+  <view bindtap="calc">
+    <button bindtap="link1">获取结果</button>
+  </view>
+  <view class="problem">预测总价：{{f_total_ex}}</view>
+</view>

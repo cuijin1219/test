@@ -1,0 +1,110 @@
+<!--pages/total/total.wxml-->
+<view class="pageName">价格估算</view>
+<view>
+  <view>
+    <view class="problem">1.请选择区县地址：</view>
+    <radio-group bindchange="pro1">
+      <label>
+        <radio value="a" />成华
+      </label>
+      <label>
+        <radio value="b" />崇州市
+      </label>
+      <label>
+        <radio value="c" />大邑
+      </label>
+      <label>
+        <radio value="d" />东部新区
+      </label>
+      <label>
+        <radio value="e" />都江堰
+      </label>
+      <label>
+        <radio value="f" />高新南
+      </label>
+      <label>
+        <radio value="g" />高新西
+      </label>
+      <label>
+        <radio value="h" />简阳
+      </label>
+      <label>
+        <radio value="i" />金牛区
+      </label>
+      <label>
+        <radio value="j" />金堂县
+      </label>
+      <label>
+        <radio value="k" />锦江区
+      </label>
+      <label>
+        <radio value="l" />彭州
+      </label>
+      <label>
+        <radio value="m" />郫都区
+      </label>
+      <label>
+        <radio value="n" />蒲江县
+      </label>
+      <label>
+        <radio value="o" />青白江区
+      </label>
+      <label>
+        <radio value="p" />青羊
+      </label>
+      <label>
+        <radio value="q" />邛崃
+      </label>
+      <label>
+        <radio value="r" />温江区
+      </label>
+      <label>
+        <radio value="s" />武侯
+      </label>
+      <label>
+        <radio value="t" />新都
+      </label>
+      <label>
+        <radio value="u" />新津县
+      </label>
+      <label>
+        <radio value="v" />全市
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">2.选择方式：</view>
+    <radio-group bindchange="pro2">
+      <label>
+        <radio value="a" />PON
+      </label>
+      <label>
+        <radio value="b" />PTN/SPN
+      </label>
+      <label>
+        <radio value="c" />天网监控
+      </label>
+      <label>
+        <radio value="d" />其他类
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view class="problem">预测单价:{{f}}</view>
+<button bindtap='link'>提交</button>
+<input placeholder="请输入签约年份，例1,2,3,4....(必填)" bindinput="setYear"></input>
+<view class="problem">预计总价:{{f_total}}</view>
+<button bindtap="increase">存量新增分点</button>
+<button bindtap="php">新项目（点到点）</button>
+<view bindtap='click'>
+  <button bindtap="new">新项目（新组网）</button>
+</view>
+<view hidden="{{hiddenName}}">
+  <view class="problem">请选择组网分点专线：</view>
+  <navigator class="choice" url="/pages/VC-OTN/VC-OTN?f_part1={{f_part1}}&f_part2={{f_part2}}" open-type="navigate">VC-OTN</navigator>
+  <navigator class="choice" url="/pages/PTN_SPN/PTN_SPN?f_part1={{f_part1}}&f_part2={{f_part2}}" open-type="navigate">PTN/SPN</navigator>
+  <navigator class="choice" url="/pages/PON/PON?f_part1={{f_part1}}&f_part2={{f_part2}}" open-type="navigate">PON</navigator>
+  <navigator class="choice" url="/pages/Bare/Bare?f_part1={{f_part1}}&f_part2={{f_part2}}" open-type="navigate">裸纤</navigator>
+</view>

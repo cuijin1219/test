@@ -1,0 +1,76 @@
+<!--index.wxml-->
+<wxs src="./fun.wxs" module="goodFilter"/>
+<!-- <input placeholder="输入专线名称" bindinput=""></input>
+<input placeholder="输入保障等级" bindinput=""></input>
+<input placeholder="输入带宽需求" bindinput=""></input>
+<input placeholder="输入设备选型" bindinput=""></input> -->
+<!--单价-->
+<!-- <view>单价一览表：</view>
+<input placeholder="输入所在区县地址" bindinput=""></input> -->
+<!--预测总价-->
+<!-- <view>预估总价：</view> -->
+<view class="pageName">首页</view>
+<button bindtap="CompareData">查看各种专线优劣</button>
+<view wx:for="{{compareList}}" wx:key="itemCompare">
+  <view wx:for="{{compareList[0]}}" wx:key="itemCompare1">
+    <view>{{index}}:{{item}}</view>
+  </view>
+  <view>-----------------------</view>
+</view>
+
+<!-- 过滤 -->
+<!-- <view>
+  <input bindinput="handleInput"/>
+  <view>{{mytext}}</view>
+  <view wx:for="{{goodFilter(testList,mytext)}}" wx:key="testindex">{{item}}</view>
+</view> -->
+<view>------------------------------------------------------ </view>
+<view>
+  <view>
+    <view class="problem">1.请选择类型：</view>
+    <radio-group bindchange="pro1">
+      <label>
+        <radio value="a" />新结点
+      </label>
+      <label>
+        <radio value="b" />点对点
+      </label>
+      <label>
+        <radio value="c" />新组网
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<input placeholder="请输入签约年份，例1,2,3,4....(必填)" bindinput="setYear"></input>
+<view hidden="{{hiddenName}}"> 
+  <input placeholder="请填写总结点数量，例如1,2,3" bindinput="setNum1"></input>
+  <input placeholder="请填写分结点数量，例如1,2,3" bindinput="setNum2"></input>
+</view>
+<view class="problem">2.请选择您需要的专线：</view>
+<view class="choice">
+  <navigator url="/pages/VC-OTN/VC-OTN?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count={{count}}" open-type="navigate">VC-OTN</navigator>
+  <navigator url="/pages/PTN_SPN/PTN_SPN?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count={{count}}" open-type="navigate">PTN/SPN</navigator>
+  <navigator url="/pages/PON/PON?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count={{count}}" open-type="navigate">PON</navigator>
+  <navigator url="/pages/Bare/Bare?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count={{count}}" open-type="navigate">裸纤</navigator>
+</view>
+<!-- <view class="page-body">
+  <view class="page-section">
+    <view class="page-section-title">请选择您需要的专线：</view>
+    <radio-group bindchange="test">
+      <label class="radio">
+        <radio value="VC-OTN" />VC-OTN
+      </label>
+      <label class="radio">
+        <radio value="PTN/SPN" />PTN/SPN
+      </label>
+      <label class="radio">
+        <radio value="PON" />PON
+      </label>
+      <label class="radio">
+        <radio value="Bare" />裸纤
+      </label>
+    </radio-group>  
+  </view>
+</view> -->
+
+

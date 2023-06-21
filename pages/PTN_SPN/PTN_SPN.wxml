@@ -1,0 +1,119 @@
+<!--pages/PTN_SPN/PTN_SPN.wxml-->
+<view class="pageName">PTN/SPN</view>
+<button class="but" bindtap="clear" size="mini">重置数据</button>
+<view>
+  <view>
+    <view class="problem">1.请选择保障等级：</view>
+    <radio-group bindchange="pro1">
+      <label>
+        <radio value="a" />AAA/AA
+      </label>
+      <label>
+        <radio value="b" />A/普通
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">2.请选择带宽：</view>
+    <radio-group bindchange="pro2">
+      <label>
+        <radio value="c" />10G>=x>1G
+      </label> 
+      <label>
+        <radio value="d" />1G>=x>1M
+      </label>
+       <label>
+        <radio value="e" />x>1G
+      </label>
+      <label>
+        <radio value="f" />1G>x>100M
+      </label>
+      <label>
+        <radio value="g" />100M>=x
+      </label>
+      <label>
+        <radio value="h" />2M语音中继
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">3.请选择客户对接端口：</view>
+    <radio-group bindchange="pro3">
+      <label>
+        <radio value="i" />以太电口/以太光口
+      </label>
+      <label>
+        <radio value="j" />以太电口
+      </label>
+      <label>
+        <radio value="k" />以太光口
+      </label>
+      <label>
+        <radio value="l" />E1
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>
+  <view>
+    <view class="problem">4.请选择设备：</view>
+    <radio-group bindchange="pro4">
+      <label>
+        <radio value="m" />PIN970
+      </label>
+      <label>
+        <radio value="n" />100M光纤收发器
+      </label>
+      <label>
+        <radio value="o" />1000光纤收发器
+      </label>
+      <label>
+        <radio value="p" />基站光纤直连
+      </label>
+    </radio-group>  
+  </view>
+</view>
+<view>{{id1+id2+id3+id4}}</view>
+
+<view wx:if="{{type!='c'}}">
+  <view class="problem">预测设备费（万）:{{f1}}</view>
+  <view class="problem">光缆及刁策服务费:{{f2}}</view>
+  <view class="problem">单端平均造价:{{f4}}</view>
+  <view class="problem">预计总价:{{f_total}}</view>
+  <button bindtap='link'>提交</button>
+</view>
+
+<!-- <view>------------------------------------------------------ </view>
+<navigator class="next" url="/pages/total/total?f1={{f1}}&f2={{f2}}&f3={{f3}}">下一页</navigator> -->
+<view wx:if="{{type=='c'}}">
+  <button wx:if="{{count==0}}" bindtap="link">提交</button>
+  <!-- <view bindtap='link'>
+    <view class="other" bindtap='click'>显示隐藏组网专用内容</view>
+  </view> -->
+</view>
+
+<view>{{f1}}+{{f2}}+{{f3}}+{{f4}}</view>
+<!-- <view hidden="{{hiddenName}}"> -->
+
+<view wx:if="{{type=='c'}}">  
+  <view wx:if="{{count==1}}">
+    <view>----------------------组网专用---------------------- </view>
+    <view class="problem">请选择组网分点专线：</view>
+    <navigator class="choice" url="/pages/VC-OTN/VC-OTN?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">VC-OTN</navigator>
+    <navigator class="choice" url="/pages/PTN_SPN/PTN_SPN?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">PTN/SPN</navigator>
+    <navigator class="choice" url="/pages/PON/PON?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">PON</navigator>
+    <navigator class="choice" url="/pages/Bare/Bare?f_part1={{f_part1}}&f_part2={{f_part2}}&type={{type}}&year={{year}}&num1={{num1}}&num2={{num2}}&count=2" open-type="navigate">裸纤</navigator>
+  </view>
+</view>
+
+<view wx:if="{{count==2}}">
+  <view bindtap="calc">
+    <button bindtap="link1">获取结果</button>
+  </view>
+  <view class="problem">预测总价：{{f_total_ex}}</view>
+</view>
+
